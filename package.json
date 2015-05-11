@@ -10,7 +10,8 @@
         "url":  "https://github.com/ai/load-resources.git"
     },
     "dependencies": {
-        "request": "^2.55.0"
+        "escape-string-regexp": "^1.0.3",
+        "request":              "^2.55.0"
     },
     "devDependencies": {
         "gulp-eslint": "0.12.0",
