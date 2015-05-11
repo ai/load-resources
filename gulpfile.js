@@ -10,7 +10,8 @@ gulp.task('lint', function () {
 
 gulp.task('test', function () {
     var mocha = require('gulp-mocha');
-    return gulp.src('test.js', { read: false }).pipe(mocha());
+    return gulp.src('test.js', { read: false })
+        .pipe(mocha({ timeout: 60000 }));
 });
 
 gulp.task('default', ['lint', 'test']);

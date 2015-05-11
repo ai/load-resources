@@ -4,7 +4,10 @@ var get    = require('./lib/get');
 function findLinks(site, html, ext) {
     ext = escape(ext);
     var regexp = new RegExp('[^"]+' + ext + '"|[^\']+' + ext + '\'', 'g');
-    return html.match(regexp).map(function(path) {
+    var files  = html.match(regexp);
+    if ( !files ) throw "Can't find CSS links at " + site;
+
+    return files.map(function(path) {
         path = path.slice(0, -1);
         if ( path.match(/^https?:/) ) {
             return path;
@@ -54,7 +57,6 @@ module.exports = function (sites, ext, callback) {
 
         get(site, function (html) {
             var files = findLinks(site, html, ext);
-            if ( !files ) throw "Can't find CSS links at " + site;
             data[i] = Array(files.length);
 
             var last = 0;
