@@ -44,6 +44,14 @@ module.exports = function (sites, ext, callback) {
     var data = Array(sites.length);
 
     sites.forEach(function (site, i) {
+        if ( site.slice(-ext.length) === ext ) {
+            data[i] = Array(1);
+            get(site, function (file, url) {
+                data[i][0] = [file, url];
+                processLoaded(data, callback);
+            });
+        }
+
         get(site, function (html) {
             var files = findLinks(site, html, ext);
             if ( !files ) throw "Can't find CSS links at " + site;
