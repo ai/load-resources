@@ -1,0 +1,1 @@
+describe('load-resource', function () { });
