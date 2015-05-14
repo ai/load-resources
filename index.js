@@ -53,6 +53,7 @@ module.exports = function (sites, ext, callback) {
                 data[i][0] = [file, url];
                 processLoaded(data, callback);
             });
+            return;
         }
 
         get(site, function (html) {
