@@ -1,6 +1,6 @@
 {
     "name": "load-resources",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Load all JS/CSS files from site website",
     "keywords": ["http"],
     "author": "Andrey Sitnik <andrey@sitnik.ru>",
