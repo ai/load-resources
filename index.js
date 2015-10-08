@@ -5,9 +5,11 @@ function findLinks(site, html, ext) {
     ext = escape(ext);
     var regexp = new RegExp('[^"]+' + ext + '"|[^\']+' + ext + '\'', 'g');
     var files  = html.match(regexp);
-    if ( !files ) throw "Can't find CSS links at " + site;
+    if ( !files ) {
+        throw new Error('Can\'t find CSS links at ' + site);
+    }
 
-    return files.map(function(path) {
+    return files.map(function (path) {
         path = path.slice(0, -1);
         if ( path.match(/^https?:/) ) {
             return path;
