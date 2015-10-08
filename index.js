@@ -11,8 +11,10 @@ function findLinks(site, html, ext) {
 
     return files.map(function (path) {
         path = path.slice(0, -1);
-        if ( path.match(/^https?:/) ) {
+        if ( /^https?:/.test(path) ) {
             return path;
+        } else if ( /^\/\//.test(path) ) {
+            return 'http:' + path;
         } else {
             return path.replace(/^\.?\.?\/?/, site);
         }

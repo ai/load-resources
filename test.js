@@ -5,7 +5,10 @@ var expect = require('chai').expect;
 describe('load-resource', function () {
 
     it('loads files', function (done) {
-        load(['https://github.com/', 'https://twitter.com/'], '.css',
+        var sites = ['https://github.com/',
+                     'https://twitter.com/',
+                     'http://habrahabr.ru'];
+        load(sites, '.css',
             function (css, url, last) {
                 console.log(url);
                 expect(css).to.be.a('string');
